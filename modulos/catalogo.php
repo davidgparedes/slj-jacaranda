@@ -43,11 +43,16 @@ $resultado = $conexion->query($sql);
                                 <div class="alert alert-success py-1 px-2 text-center small mb-3"><i class="bi bi-check-circle"></i> Disponible: <?php echo $libro['existencias']; ?></div>
                             <?php endif; ?>
 
-                            <div class="mt-auto">
-                                <a href="../acciones/procesar_compra.php?accion=agregar&id=<?php echo $libro['id_libro']; ?>" class="btn btn-sm btn-primary w-100 <?php echo ($libro['existencias'] == 0) ? 'disabled' : ''; ?>">
-                                <i class="bi bi-cart-plus"></i> Agregar al carrito
-                                </a>
-                            </div>
+                            <div class="mt-auto d-grid gap-2">
+                            <!-- Botón para ver la sinopsis, formato y calificaciones -->
+                            <a href="detalle_libro.php?id=<?php echo $libro['id_libro']; ?>" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-eye"></i> Ver Detalle y Sinopsis
+                            </a>
+                            <!-- Botón para agregar al carrito -->
+                            <a href="../acciones/procesar_compra.php?accion=agregar&id=<?php echo $libro['id_libro']; ?>" class="btn btn-primary btn-sm">
+                                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                            </a>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -14,10 +14,43 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Iconos de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        body { background-color: #f8f9fa; }
-        .navbar-brand { font-weight: bold; color: #6f42c1 !important; }
-        .bg-purple { background-color: #6f42c1; color: white; }
+        body { 
+            background-color: #f4f6f9; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar { 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        }
+        .navbar-brand { 
+            font-weight: 800; 
+            color: #d8b4fe !important; 
+            letter-spacing: 1px;
+        }
+        .card {
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none !important;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+        }
+        .bg-purple { 
+            background: linear-gradient(135deg, #6f42c1, #4a2a85); 
+            color: white; 
+        }
         .text-purple { color: #6f42c1; }
+        .btn-primary {
+            background-color: #6f42c1;
+            border-color: #6f42c1;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #4a2a85;
+            border-color: #4a2a85;
+        }
+        .badge { font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -58,10 +91,13 @@ if (session_status() === PHP_SESSION_NONE) {
         <!-- Cambiar botones según si hay sesión iniciada -->
         <?php if(isset($_SESSION['nombre'])): ?>
             <li class="nav-item dropdown ms-2">
-                <a class="nav-link dropdown-toggle text-white fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                <a class="nav-link dropdown-toggle text-purple fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                     <i class="bi bi-person-circle"></i> <?php echo $_SESSION['nombre']; ?>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                    <!-- Botón nuevo de Mi Perfil -->
+                    <li><a class="dropdown-item" href="/slj-jacaranda/modulos/perfil.php"><i class="bi bi-person-vcard"></i> Mi Perfil</a></li>
+                    <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="/slj-jacaranda/acciones/cerrar_sesion.php"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a></li>
                 </ul>
             </li>

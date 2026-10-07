@@ -24,6 +24,9 @@ include '../includes/header.php';
                             <input type="password" name="password" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 bg-purple border-0"><i class="bi bi-box-arrow-in-right"></i> Entrar al Sistema</button>
+                        <div class="text-center mt-4">
+    <span class="text-muted">¿No tienes cuenta?</span> <a href="registro.php" class="text-purple fw-bold text-decoration-none">Regístrate aquí</a>
+</div>
                     </form>
                 </div>
             </div>
