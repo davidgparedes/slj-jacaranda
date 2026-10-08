@@ -62,22 +62,24 @@ if (session_status() === PHP_SESSION_NONE) {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <!-- Enlaces Principales -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/slj-jacaranda/modulos/catalogo.php"><i class="bi bi-journal-bookmark"></i> Catálogo de Libros</a>
+          <a class="nav-link" href="/slj-jacaranda/modulos/catalogo.php"><i class="bi bi-journal-bookmark"></i> Catálogo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/slj-jacaranda/modulos/prestamos.php"><i class="bi bi-clock-history"></i> Préstamos y Multas</a>
+          <a class="nav-link" href="/slj-jacaranda/modulos/sugerencias.php"><i class="bi bi-lightbulb"></i> Sugerencias</a>
         </li>
-        
-        <!-- Mostrar Panel Admin solo si es administrador -->
-        <?php if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin'): ?>
-            <li class="nav-item">
-            <a class="nav-link" href="/slj-jacaranda/modulos/panel_admin.php"><i class="bi bi-speedometer2"></i> Panel Admin</a>
-            </li>
-        <?php endif; ?>
+        <li class="nav-item">
+          <a class="nav-link" href="/slj-jacaranda/modulos/notificaciones.php"><i class="bi bi-bell"></i> Avisos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/slj-jacaranda/modulos/prestamos.php"><i class="bi bi-clock-history"></i> Préstamos</a>
+        </li>
       </ul>
       
+      <!-- Menú de Carrito y Usuario -->
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/slj-jacaranda/modulos/carrito.php">
@@ -88,15 +90,27 @@ if (session_status() === PHP_SESSION_NONE) {
           </a>
         </li>
         
-        <!-- Cambiar botones según si hay sesión iniciada -->
         <?php if(isset($_SESSION['nombre'])): ?>
             <li class="nav-item dropdown ms-2">
                 <a class="nav-link dropdown-toggle text-purple fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                     <i class="bi bi-person-circle"></i> <?php echo $_SESSION['nombre']; ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                    <!-- Botón nuevo de Mi Perfil -->
+                    <!-- Opciones de Cliente -->
                     <li><a class="dropdown-item" href="/slj-jacaranda/modulos/perfil.php"><i class="bi bi-person-vcard"></i> Mi Perfil</a></li>
+                    <li><a class="dropdown-item" href="/slj-jacaranda/modulos/favoritos.php"><i class="bi bi-heart-fill text-danger"></i> Mis Favoritos</a></li>
+                    <li><a class="dropdown-item" href="/slj-jacaranda/modulos/historial_compras.php"><i class="bi bi-bag-check"></i> Mis Compras</a></li>
+                    <li><a class="dropdown-item" href="/slj-jacaranda/modulos/garantias.php"><i class="bi bi-shield-exclamation"></i> Devoluciones y Garantías</a></li>
+                    
+                    <!-- Opciones exclusivas de Administrador -->
+                    <?php if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin'): ?>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header text-purple fw-bold">Administración</h6></li>
+                        <li><a class="dropdown-item" href="/slj-jacaranda/modulos/panel_admin.php"><i class="bi bi-speedometer2"></i> Panel Principal</a></li>
+                        <li><a class="dropdown-item" href="/slj-jacaranda/modulos/admin_usuarios.php"><i class="bi bi-people"></i> Gestión de Usuarios</a></li>
+                        <li><a class="dropdown-item" href="/slj-jacaranda/modulos/admin_envios.php"><i class="bi bi-truck"></i> Gestión de Envíos</a></li>
+                    <?php endif; ?>
+                    
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="/slj-jacaranda/acciones/cerrar_sesion.php"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a></li>
                 </ul>

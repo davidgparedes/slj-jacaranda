@@ -90,8 +90,9 @@ $total = 0;
                         <h5 class="fw-bold text-purple">$<?php echo number_format($total, 2); ?></h5>
                     </div>
                     
-                    <a href="../acciones/procesar_compra.php?accion=pagar" class="btn btn-success btn-lg w-100 <?php echo empty($carrito) ? 'disabled' : ''; ?>">
-                        <i class="bi bi-credit-card"></i> Confirmar y Pagar Orden
+                    <!-- Botón conectado a checkout.php -->
+                    <a href="checkout.php" class="btn btn-success btn-lg w-100 <?php echo empty($carrito) ? 'disabled' : ''; ?>">
+                        <i class="bi bi-credit-card"></i> Proceder al Pago
                     </a>
                 </div>
             </div>

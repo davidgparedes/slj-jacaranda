@@ -23,6 +23,9 @@ include '../includes/header.php';
                             <label class="form-label">Contraseña</label>
                             <input type="password" name="password" class="form-control" required>
                         </div>
+                        <div class="text-end mb-3">
+                        <a href="recuperar.php" class="text-purple small text-decoration-none">¿Olvidaste tu contraseña?</a>
+                    </div>
                         <button type="submit" class="btn btn-primary w-100 bg-purple border-0"><i class="bi bi-box-arrow-in-right"></i> Entrar al Sistema</button>
                         <div class="text-center mt-4">
     <span class="text-muted">¿No tienes cuenta?</span> <a href="registro.php" class="text-purple fw-bold text-decoration-none">Regístrate aquí</a>

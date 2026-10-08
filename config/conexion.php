@@ -11,5 +11,5 @@ if ($conexion->connect_error) {
 }
 
 // Configurar caracteres especiales (tildes y ñ)
-$conexion->set_charset("utf8mb4");
+$conexion->set_charset("utf8mb4")
 ?>

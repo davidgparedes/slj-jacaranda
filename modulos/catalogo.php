@@ -7,6 +7,17 @@ $busqueda = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 $sql = "SELECT * FROM libros WHERE titulo LIKE '%$busqueda%' OR autor LIKE '%$busqueda%' OR genero LIKE '%$busqueda%'";
 $resultado = $conexion->query($sql);
 ?>
+<?php
+// Buscar qué libros ya tiene en favoritos el usuario actual
+$favoritos_usuario = [];
+if (isset($_SESSION['id_usuario'])) {
+    $id_usu = $_SESSION['id_usuario'];
+    $fav_query = $conexion->query("SELECT id_libro FROM favoritos WHERE id_usuario = $id_usu");
+    while($f = $fav_query->fetch_assoc()){
+        $favoritos_usuario[] = $f['id_libro']; // Guardamos los IDs en un arreglo
+    }
+}
+?>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -44,6 +55,21 @@ $resultado = $conexion->query($sql);
                             <?php endif; ?>
 
                             <div class="mt-auto d-grid gap-2">
+
+                            <!-- Lógica del botón de favoritos -->
+                            <?php if(isset($_SESSION['id_usuario'])): ?>
+                                <?php if(in_array($libro['id_libro'], $favoritos_usuario)): ?>
+                                    <!-- Corazón RELLENO y botón ROJO (Ya es favorito) -->
+                                    <a href="../acciones/toggle_favorito.php?id=<?= $libro['id_libro'] ?>&origen=catalogo" class="btn btn-danger btn-sm mb-2">
+                                        <i class="bi bi-heart-fill"></i> Quitar de Favoritos
+                                        </a>
+                                    <?php else: ?>
+                                        <!-- Corazón VACÍO y botón BLANCO (No es favorito) -->
+                                        <a href="../acciones/toggle_favorito.php?id=<?= $libro['id_libro'] ?>&origen=catalogo" class="btn btn-outline-danger btn-sm mb-2">
+                                            <i class="bi bi-heart"></i> Agregar a Favoritos
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             <!-- Botón para ver la sinopsis, formato y calificaciones -->
                             <a href="detalle_libro.php?id=<?php echo $libro['id_libro']; ?>" class="btn btn-outline-primary btn-sm">
                                 <i class="bi bi-eye"></i> Ver Detalle y Sinopsis
