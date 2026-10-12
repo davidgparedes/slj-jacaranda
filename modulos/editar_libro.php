@@ -34,6 +34,10 @@ $libro = $query->fetch_assoc();
                 <label class="form-label fw-bold">Sinopsis</label>
                 <textarea name="sinopsis" class="form-control" rows="4"><?= $libro['sinopsis'] ?></textarea>
             </div>
+            <div class="mb-3">
+                <label class="form-label">URL de la Portada</label>
+                <input type="url" name="imagen_portada" class="form-control" value="<?= $libro['imagen_portada'] ?>" placeholder="https://ejemplo.com/imagen.jpg">
+            </div>
             <button type="submit" class="btn btn-primary w-100"><i class="bi bi-save"></i> Guardar Cambios</button>
         </form>
     </div>
